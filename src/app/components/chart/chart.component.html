@@ -1,0 +1,20 @@
+<div class="chart-container">
+  <div class="chart-header">
+    <h3>Evolución del Precio</h3>
+    <div class="period-selector">
+      <button 
+        *ngFor="let period of periods" 
+        [class.active]="period === currentPeriod"
+        (click)="onPeriodChange(period)">
+        {{ period }}
+      </button>
+    </div>
+  </div>
+  
+  <div class="chart-wrapper">
+    <canvas #chartCanvas *ngIf="isBrowser"></canvas>
+    <div *ngIf="!isBrowser" class="chart-placeholder">
+      <p>Cargando gráfico...</p>
+    </div>
+  </div>
+</div>

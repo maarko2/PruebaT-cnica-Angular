@@ -1,0 +1,24 @@
+<div class="instrument-list-container">
+  <div class="list-header">
+    <h3>Instrumentos</h3>
+    <span class="count" *ngIf="!isLoading">
+      {{ filteredConstituents.length }} instrumento(s)
+    </span>
+  </div>
+
+  <div class="loading-state" *ngIf="isLoading">
+    <p>Cargando instrumentos...</p>
+  </div>
+
+  <div class="empty-state" *ngIf="!isLoading && filteredConstituents.length === 0">
+    <p>No se encontraron instrumentos que coincidan con la búsqueda.</p>
+  </div>
+
+  <div class="instruments-list" *ngIf="!isLoading && filteredConstituents.length > 0">
+    <app-instrument-item
+      *ngFor="let constituent of filteredConstituents; trackBy: trackByCode"
+      [constituent]="constituent"
+      (instrumentSelected)="onInstrumentSelected($event)"
+    />
+  </div>
+</div>

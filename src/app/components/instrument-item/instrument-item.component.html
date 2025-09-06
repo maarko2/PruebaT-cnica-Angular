@@ -1,0 +1,65 @@
+<div 
+  class="instrument-item" 
+  [class.selected]="isSelected"
+  (click)="onItemClick()"
+>
+  <div class="instrument-info">
+    <div class="instrument-header">
+      <div class="instrument-name">
+        <span class="code">{{ constituent.codeInstrument }}</span>
+        <span class="full-name">{{ constituent.name }}</span>
+      </div>
+      <div class="tendency">
+        <i [class]="getTendencyIcon(constituent.tend)" [ngClass]="getPerformanceClass(constituent.performanceRelative)"></i>
+      </div>
+    </div>
+    
+    <div class="instrument-metrics">
+      <div class="price-section">
+        <div class="current-price">
+          {{ formatNumber(constituent.lastPrice) }}
+        </div>
+        <div class="price-change" [ngClass]="getPerformanceClass(constituent.performanceRelative)">
+          <span class="absolute">{{ formatNumber(constituent.performanceAbsolute) }}</span>
+          <span class="percentage">({{ formatPercentage(constituent.performanceRelative) }})</span>
+        </div>
+      </div>
+      
+      <div class="performance-section">
+        <div class="performance-item">
+          <span class="label">1D:</span>
+          <span class="value" [ngClass]="getPerformanceClass(constituent.pctDay)">
+            {{ formatPercentage(constituent.pctDay) }}
+          </span>
+        </div>
+        <div class="performance-item">
+          <span class="label">30D:</span>
+          <span class="value" [ngClass]="getPerformanceClass(constituent.pct30D)">
+            {{ formatPercentage(constituent.pct30D) }}
+          </span>
+        </div>
+        <div class="performance-item">
+          <span class="label">1Y:</span>
+          <span class="value" [ngClass]="getPerformanceClass(constituent.pct1Y)">
+            {{ formatPercentage(constituent.pct1Y) }}
+          </span>
+        </div>
+      </div>
+      
+      <div class="volume-section">
+        <div class="volume-item">
+          <span class="label">Volumen:</span>
+          <span class="value">{{ formatVolume(constituent.volumeMoney) }}</span>
+        </div>
+        <div class="volume-item">
+          <span class="label">Vol. Acum:</span>
+          <span class="value">{{ formatVolume(constituent.accumulatedVolumeMoney) }}</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="last-update">
+      {{ constituent.datetimeLastPrice }}
+    </div>
+  </div>
+</div>

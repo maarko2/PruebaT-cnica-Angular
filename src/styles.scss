@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(180deg,#0b0d15 0%, #12121b 60%);
+  color: #e6eef8;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+main { padding: 18px; }
+
+.app-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: rgba(255,255,255,0.02); border-radius: 6px; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.06); border-radius: 6px; }
+
+.positive { color: #00d97e; }
+.negative { color: #ff6b6b; }
+.neutral { color: #98a8c4; }
+
+.fade-in { animation: fadeIn .28s ease-in-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 768px) { .app-shell { padding: 12px; } }

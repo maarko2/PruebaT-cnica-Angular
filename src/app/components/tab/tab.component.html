@@ -1,0 +1,14 @@
+<div class="tab-container">
+  <div class="tab-wrapper">
+    <div class="tab-buttons">
+      <button 
+        *ngFor="let index of availableIndices; let i = index" 
+        [class.active]="activeIndex === i"
+        (click)="onTabChange({index: i})"
+        class="tab-button"
+      >
+        {{ index.name }}
+      </button>
+    </div>
+  </div>
+</div>
